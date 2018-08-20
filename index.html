@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <header class="jumbotron">
+            <h1 class="change-state display-1 d-inline">Project-1</h1>
+            <a href="index2.html"><h4 class="change-state display-1 d-inline">goto Project-2</h4></a>
+
+        </header>
+
+        <div class="container">
+            <h1>Declarative vs Imperative Programming</h1>
+            <h3 class="change-state ">Or wrong ways I was thinking about React</h3>
+
+            <p>If you’ve read the React docs, you probably have seen that React is declarative. This is normally the type of thing I skip over — a not so good habit of mine. (Give me the code samples already!) But as someone who started learning React soon out of college, I was often thinking about problems incorrectly.This isn’t surprising. College CS can be an exercise is writing hacky scripts to solve one off problems. That was great for my coding interviews, but not so great for web development at scale. And that’s not a knock on my education — it provided me with a lot of the tools I needed to get started. It’s my job to continue to grow and become a better developer.</p>
+
+            <p class="change-state h3">What are Declarative and Imperative Programming?</p>
+
+            <div class="blockquote">
+                <span class="h4 change-state ">Declarative programming</span><p class="change-state d-inline"> is a programming paradigm … that expresses the logic of a computation without describing its control flow.</p><br>
+                <span class="h4 change-state ">Imperative programming</span> <p class="change-state d-inline">is a programming paradigm that uses statements that change a program’s state.</p>
+            </div>
+
+
+            <p class="change-state">Programming Paradigm” sounds super pretentious and is definitely a phrase some of my college profs loved. If you’ve had a formal CS education, these definitions may not be that cryptic, but still I find that examples go a long way in helping.
+
+            Before I get too far though, I want to stress that there is nothing wrong with either of these approaches. They absolutely have strengths and weaknesses, but one approach will always be right. For instance, declarative programming can result in less direct control, which may not be correct for applications like embedded systems where “the right answer delivered too late becomes the wrong answer.”
+
+            Alright here’s a metaphor.
+
+            Declarative Programming is like asking your friend to draw a landscape. You don’t care how they draw it, that’s up to them.
+
+            Imperative Programming is like your friend listening to Bob Ross tell them how to paint a landscape. While good ole Bob Ross isn’t exactly commanding, he is giving them step by step directions to get the desired result.
+
+            Tell Me In Code</p>
+
+            <div id="display-result-container"class="row">
+                <div id="display-result-name" class="column  bg-success rounded mb-5" style="width:200px"></div>
+                <div id="display-result-count" class="column  bg-warning rounded mb-5 ml-2" style="width:200px"></div>
+            </div>
+
+        </div>
+
+        <script src="js/jquery.slim.min.js" type="text/javascript"></script>
+        <script src="js/tether.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function($) {
+                i2 = document.querySelectorAll('.change-state');
+            });
+        </script>
+
+        <script type="text/javascript">
+        $(document).ready(function($) {
+
+            var prepositions = [
+              "a",
+              "abaft",
+              "aboard",
+              "about",
+              "above",
+              "absent",
+              "across",
+              "afore",
+              "after",
+              "against",
+              "along",
+              "alongside",
+              "amid",
+              "amidst",
+              "among",
+              "amongst",
+              "an",
+              "anenst",
+              "apropos",
+              "apud",
+              "around",
+              "as",
+              "aside",
+              "astride",
+              "at",
+              "athwart",
+              "atop",
+              "barring",
+              "before",
+              "behind",
+              "below",
+              "beneath",
+              "beside",
+              "besides",
+              "between",
+              "beyond",
+              "but",
+              "by",
+              "circa",
+              "concerning",
+              "despite",
+              "down",
+              "during",
+              "except",
+              "excluding",
+              "failing",
+              "following",
+              "for",
+              "forenenst",
+              "from",
+              "given",
+              "in",
+              "including",
+              "inside",
+              "into",
+              "lest",
+              "like",
+              "mid",
+              "midst",
+              "minus",
+              "modulo",
+              "near",
+              "next",
+              "notwithstanding",
+              "of",
+              "off",
+              "on",
+              "onto",
+              "opposite",
+              "out",
+              "outside",
+              "over",
+              "pace",
+              "past",
+              "per",
+              "plus",
+              "pro",
+              "qua",
+              "regarding",
+              "round",
+              "sans",
+              "save",
+              "since",
+              "than",
+              "through",
+              "throughout",
+              "till",
+              "times",
+              "to",
+              "toward",
+              "towards",
+              "under",
+              "underneath",
+              "unlike",
+              "until",
+              "unto",
+              "up",
+              "upon",
+              "versus",
+              "via",
+              "vice",
+              "with",
+              "within",
+              "without",
+              "worth"
+            ]
+
+            var checkUniq = [];
+            var display = document.getElementById('display-result-name');
+            var displayCount = document.getElementById('display-result-count');
+            var displayContainer = document.getElementById('display-result-container');
+            //loop through each element and change the state
+            i2.forEach((element)=>{
+                    var preportionRemoved = element.innerText.split(" ").map((n)=>{
+
+                        if(checkUniq.indexOf(n.toLowerCase()) == -1){
+                            checkUniq.push(n.toLowerCase());
+                            // console.log(display);
+                            // console.log(n.toLowerCase());
+                            $(display).append( '<p class="pl-5 pt-2 text-white">'+n.toLowerCase()+'</p>');
+                            $(displayCount).append('<p class="pl-5 pt-2 text-white" id = '+n.toLowerCase()+'>'+1+'</p>');
+                        }else{
+                            let changecount  = document.getElementById(n.toLowerCase());
+                            // console.log(document);
+                            console.log(changecount);
+                            let increaseCount = parseInt(changecount.innerText);
+                            changecount.innerText = ++increaseCount;
+                        }
+
+                        if(prepositions.indexOf(n.toLowerCase()) > -1){
+                            return n.toLowerCase().replace(n.toLowerCase(),"");
+                        }else{
+                            return n.toLowerCase().toLowerCase();
+                        }
+                });
+                element.innerText = preportionRemoved.join(" ");
+            });
+
+            // console.log(wordsAndCount);
+
+        });
+        </script>
+    </body>
+</html>
