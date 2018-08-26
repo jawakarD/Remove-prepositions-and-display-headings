@@ -170,20 +170,23 @@
             var display = document.getElementById('display-result-name');
             var displayCount = document.getElementById('display-result-count');
             var displayContainer = document.getElementById('display-result-container');
+            var highContent = '';
+            var highContentValue = 0;
             //loop through each element and change the state
             i2.forEach((element)=>{
                     var preportionRemoved = element.innerText.split(" ").map((n)=>{
 
                         if(checkUniq.indexOf(n.toLowerCase()) == -1){
                             checkUniq.push(n.toLowerCase());
+
                             // console.log(display);
                             // console.log(n.toLowerCase());
                             $(display).append( '<p class="pl-5 pt-2 text-white">'+n.toLowerCase()+'</p>');
                             $(displayCount).append('<p class="pl-5 pt-2 text-white" id = '+n.toLowerCase()+'>'+1+'</p>');
                         }else{
                             let changecount  = document.getElementById(n.toLowerCase());
-                            // console.log(document);
-                            console.log(changecount);
+
+                            // console.log(changecount);
                             let increaseCount = parseInt(changecount.innerText);
                             changecount.innerText = ++increaseCount;
                         }
@@ -197,7 +200,20 @@
                 element.innerText = preportionRemoved.join(" ");
             });
 
-            // console.log(wordsAndCount);
+            Array.prototype.byCount= function(){
+                var itm, a= [], L= this.length, o= {};
+                for(var i= 0; i<L; i++){
+                    itm= this[i];
+                    if(!itm) continue;
+                    if(o[itm]== undefined) o[itm]= 1;
+                    else ++o[itm];
+                }
+                for(var p in o) a[a.length]= p;
+                return a.sort(function(a, b){
+                    return o[b]-o[a];
+                });
+            }
+            console.log(checkUniq);
 
         });
         </script>
